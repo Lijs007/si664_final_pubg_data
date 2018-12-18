@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS weapon (
+  weapon_id INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+  weapon_name VARCHAR(45) NOT NULL,
+  PRIMARY KEY (weapon_id)
+)
+ENGINE=InnoDB
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_0900_ai_ci;
+
+LOAD DATA LOCAL INFILE 'C:/Users/ABC/Desktop/664/final_repo/data/weapon.csv'
+INTO TABLE weapon
+  CHARACTER SET utf8mb4
+  FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+  LINES TERMINATED BY '\r\n'
+  IGNORE 1 LINES
+  (weapon_name);

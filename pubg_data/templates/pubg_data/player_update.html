@@ -1,0 +1,90 @@
+<!-- Restore missing template tags -->
+{% extends 'pubg_data/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+  <header>
+    <h2>Site Update</h2>
+  </header>
+
+  <!-- novalidate attribute required to render validation messages -->
+  <form method="post" novalidate>
+  {% csrf_token %}
+  
+
+  <!-- Restore missing fields rendered using Bootstrap rows and columns classes -->
+
+    <div class="row">
+      <div class="col-6">
+        {{ form.player_name|as_crispy_field }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        {{ form.player_kills|as_crispy_field }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        {{ form.player_dbno|as_crispy_field }}
+      </div>
+    </div>
+
+
+    <!-- Restore missing fields rendered using Bootstrap rows and columns classes --> 
+
+    <div class="row">
+      <div class="col-6">
+        {{ form.player_assists|as_crispy_field }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        {{ form.player_dmg|as_crispy_field }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        {{ form.player_dist_ride|as_crispy_field }}
+      </div>
+    </div>
+    
+    
+    <div class="row">
+      <div class="col-6">
+        {{ form.player_dist_walk|as_crispy_field }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        {{ form.player_survive_time|as_crispy_field }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        {{ form.match|as_crispy_field }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        {{ form.team|as_crispy_field }}
+      </div>
+    </div>
+
+  <button type="submit" class="btn btn-outline-success">Update</button>
+  
+  <!-- Restore missing button -->
+  &nbsp;<a class="btn btn-outline-secondary" href="{% url 'player' %}">cancel</a>
+
+</form>
+
+{% endblock content %}

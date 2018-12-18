@@ -1,0 +1,166 @@
+{% extends 'pubg_data/base.html' %}
+
+{% load pubg_data_extras %}
+
+{% block content %}
+
+<!-- safe filter on for raw HTML stored in database -->
+
+<header>
+ <div class="row">
+   <div class="col-sm-10">
+     <h2>{{ player.player_name | safe }}</h2>
+     <p>Note that all numbers are average data per match.</p>
+   </div>
+   <div class="col-xs-1">
+     {% if user.is_authenticated %}
+       <a class="btn btn-outline-secondary" href="{% url 'player_update' player.pk %}">edit</a>
+     {% endif %}
+   </div>
+   <div class="col-xs-1">
+     {% if user.is_authenticated %}
+       &nbsp;<a class="btn btn-outline-warning" href="{% url 'player_delete' player.pk %}">delete</a>
+     {% endif %}
+   </div>
+ </div>
+</header>
+
+
+
+
+  <div class="row">
+    <div class="col-sm-2">
+      <p>Player Kills</p>
+    </div>
+    <div class="col-sm-10">
+      {% if player.player_kills %}
+      {{player.player_kills | safe}}
+      {% else %}
+      0
+      {% endif %}
+    </div>
+  </div>
+
+    <div class="row">
+    <div class="col-sm-2">
+      <p>Player Down But No Out</p>
+    </div>
+    <div class="col-sm-10">
+      {% if player.player_dbno %}
+      {{player.player_dbno | safe}}
+      {% else %}
+      0
+      {% endif %}
+    </div>
+  </div>
+
+    <div class="row">
+    <div class="col-sm-2">
+      <p>Player Assists</p>
+    </div>
+    <div class="col-sm-10">
+      {% if player.player_assists %}
+      {{player.player_assists | safe}}
+      {% else %}
+      0
+      {% endif %}
+    </div>
+  </div>
+
+    <div class="row">
+    <div class="col-sm-2">
+      <p>Player Damage</p>
+    </div>
+    <div class="col-sm-10">
+      {% if player.player_dmg %}
+      {{player.player_dmg | safe}}
+      {% else %}
+      0
+      {% endif %}
+    </div>
+  </div>
+
+    <div class="row">
+    <div class="col-sm-2">
+      <p>Player Distance Ride</p>
+    </div>
+    <div class="col-sm-10">
+      {% if player.player_dist_ride %}
+      {{player.player_dist_ride| safe}}
+      {% else %}
+      0
+      {% endif %}
+    </div>
+  </div>
+
+    <div class="row">
+    <div class="col-sm-2">
+      <p>Player Distance Walk</p>
+    </div>
+    <div class="col-sm-10">
+      {% if player.player_dist_walk %}
+      {{player.player_dist_walk | safe}}
+      {% else %}
+      0
+      {% endif %}
+    </div>
+  </div>
+
+    <div class="row">
+    <div class="col-sm-2">
+      <p>Player Survive Time (seconds)</p>
+    </div>
+    <div class="col-sm-10">
+      {% if player.player_survive_time %}
+      {{player.player_survive_time | safe}}
+      {% else %}
+      0
+      {% endif %}
+    </div>
+  </div>
+
+    <div class="row">
+    <div class="col-sm-2">
+      <p>Player Attended Match(es)</p>
+    </div>
+      {% if player.matches %}
+    <div class="col-sm-10">
+      {{player.matches | safe}}
+    </div>
+      {% endif %}
+  </div>
+
+  <div class="row">
+    <div class="col-sm-2">
+      <p>Player Team Placement(s)</p>
+    </div>
+      {% if player.team_placements %}
+    <div class="col-sm-10">
+      {{player.team_placements | safe}}
+    </div>
+      {% endif %}
+  </div>
+
+    <div class="row">
+    <div class="col-sm-2">
+      <p>Killed By</p>
+    </div>
+      {% if player.deaths %}
+    <div class="col-sm-10">
+      {{player.deaths | safe}}
+    </div>
+      {% endif %}
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}}

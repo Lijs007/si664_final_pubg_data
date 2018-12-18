@@ -1,0 +1,68 @@
+{% extends 'pubg_data/base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <h6>{{ match.match_id_in_game }}</h6>
+
+    {% if match.date %}
+      <div class="row">
+        <div class="col-sm-2">
+          <p>Datetime</p>
+        </div>
+        <div class="col-sm-10">
+          <p>{{ match.date }}</p>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if match.game_size %}
+      <div class="row">
+        <div class="col-sm-2">
+          <p>Game Size</p>
+        </div>
+        <div class="col-sm-10">
+          <p>{{ match.game_size }}</p>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if match.game_mode %}
+      <div class="row">
+        <div class="col-sm-2">
+          <p>Game Mode</p>
+        </div>
+        <div class="col-sm-10">
+          <p>{{ match.game_mode }}</p>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if match.party_size %}
+      <div class="row">
+        <div class="col-sm-2">
+          <p>Party Size</p>
+        </div>
+        <div class="col-sm-10">
+          <p>{{ match.party_size }}</p>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if match.map.map_name %}
+      <div class="row">
+        <div class="col-sm-2">
+          <p>Map</p>
+        </div>
+        <div class="col-sm-10">
+          <p>{{ match.map.map_name }}</p>
+        </div>
+      </div>
+    {% endif %}
+
+
+
+{% else %}
+  <a href="{% url 'login' %}">Log in</a>
+{% endif %}
+
+{% endblock content %}

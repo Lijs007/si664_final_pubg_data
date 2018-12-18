@@ -1,0 +1,34 @@
+{% extends 'pubg_data/base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<article>
+  <header>
+    <h2>PUBG Matches</h2>
+  </header>
+
+  {% include './pagination.html' %}
+
+  {% if matches %}
+    {% for match in matches %}
+      <div class="row">
+        <div class="col-sm-5">
+          <p><a href="{% url 'match_detail' match.pk %}">{{ match.match_id_in_game }}</a></p>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No matches are available to view.</p>
+  {% endif %}
+
+
+ <p>page count: {{ matches.count }}</p>
+</article>
+
+{% else %}
+    <a href="{% url 'login' %}">Log in</a>
+{% endif %}
+
+{% endblock content %}}

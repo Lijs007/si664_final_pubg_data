@@ -1,0 +1,14 @@
+{% extends 'pubg_data/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+  <form method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete the Player "{{ player.player_name }}"?</p>
+    <button type="submit" class="btn btn-outline-danger">delete</button>
+    <a class="btn btn-outline-secondary" href="{% url 'player_detail' player.pk %}">cancel</a>
+  </form>
+
+{% endblock content %}
